@@ -9,7 +9,7 @@ const palettes=[
 {name:"Emerald",accent:"#1f9d73",bg:"#ffffff",soft:"#e7f7f1",text:"#10201a"},
 {name:"Rose",accent:"#e05c8c",bg:"#ffffff",soft:"#fff0f5",text:"#24151b"}
 ];
-function page(id,name){return{id,name,sections:[
+function page(id,name){return{id,name,texts:{},links:{},sections:[
 {id:uid("header"),type:"header"},{id:uid("hero"),type:"hero"},{id:uid("features"),type:"features"},{id:uid("products"),type:"products"},{id:uid("footer"),type:"footer"}]}}
 const initial={projectName:"My Store",pages:[page("home","Home")],activePage:"home",accent:"#7046ff",palette:"Lavender",device:"desktop",zoom:1,history:[],future:[],selected:null};
 let state=load(),renameTarget=null,tab="style";
@@ -28,7 +28,7 @@ renderPages();renderCanvas();renderInspector();
 $("#projectNameBtn").innerHTML=esc(state.projectName)+' <span>⌄</span>';
 $("#breadcrumbProject").textContent=state.projectName;$("#breadcrumbPage").textContent=active().name;
 $("#siteFrame").className="site-frame "+state.device;$("#siteFrame").style.transform="scale("+state.zoom+")";
-$("#zoomLabel").textContent=Math.round(state.zoom*100)+"%";
+$("#zoomLabel").textContent=Math.round(state.zoom*100)+"%";document.documentElement.style.setProperty("--wb-purple",state.accent);
 $$(".device-btn").forEach(b=>b.classList.toggle("active",b.dataset.device===state.device));
 }
 function renderPages(){
@@ -50,7 +50,7 @@ el.addEventListener("click",e=>{if(e.target.closest("button,input,textarea,summa
 function bindText(el,id){
 el.querySelectorAll(".canvas-edit-text").forEach(n=>{
 n.addEventListener("click",e=>{e.stopPropagation();state.selected={sectionId:id,elementKey:n.dataset.key||"text"};renderInspector()});
-n.addEventListener("dblclick",e=>{e.stopPropagation();commit();n.contentEditable="true";n.focus();document.execCommand("selectAll",false,null);const done=()=>{n.contentEditable="false";dirty()};n.addEventListener("blur",done,{once:true});n.addEventListener("keydown",ev=>{if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();n.blur()}},{once:true})})
+n.addEventListener("dblclick",e=>{e.stopPropagation();commit();const key=n.dataset.key||"text";n.dataset.key=key;n.contentEditable="true";n.focus();document.execCommand("selectAll",false,null);const done=()=>{n.contentEditable="false";const sec=findSec(id);sec.texts=sec.texts||{};sec.texts[key]=n.textContent.trim();touch();render()};n.addEventListener("blur",done,{once:true});n.addEventListener("keydown",ev=>{if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();n.blur()}},{once:true})})
 })}
 function renderCanvas(){
 const c=$("#sitePage");c.innerHTML="";const p=active();
@@ -67,8 +67,8 @@ if(s.type==="faq")el.innerHTML+=`<div class="feature-section-edit"><span class="
 if(s.type==="footer")el.innerHTML+=`<span class="canvas-edit-text" data-key="left">© 2026 YOUR BRAND</span><span class="canvas-edit-text" data-key="right">Built with DEWIFY</span>`;
 el.classList.add(s.type==="header"?"site-header-section":s.type==="hero"?"site-hero":s.type==="features"||s.type==="about"||s.type==="contact"||s.type==="faq"?"feature-section-edit":s.type==="products"?"product-section-edit":s.type==="footer"?"site-footer-section":"feature-section-edit");
 if(s.type==="header"){const nav=el.querySelector(".site-nav-edit");state.pages.forEach(q=>{const b=document.createElement("button");b.type="button";b.textContent=q.name;b.onclick=e=>{e.stopPropagation();state.activePage=q.id;state.selected=null;render();dirty()};nav.appendChild(b)})}
-bindSec(el,s.id);bindText(el,s.id);
-el.querySelectorAll('[data-link="true"]').forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();state.selected={sectionId:s.id,elementKey:"link"};renderInspector()}));
+const savedTexts=s.texts||{};el.querySelectorAll(".canvas-edit-text").forEach((n,k)=>{const key=n.dataset.key||("text-"+k);n.dataset.key=key;if(Object.prototype.hasOwnProperty.call(savedTexts,key))n.textContent=savedTexts[key]});const linkButtons=el.querySelectorAll("[data-link=true]");linkButtons.forEach((b,k)=>{b.dataset.key="link-"+k;if(s.links&&s.links[b.dataset.key])b.dataset.linkTarget=s.links[b.dataset.key]});bindSec(el,s.id);bindText(el,s.id);
+el.querySelectorAll('[data-link="true"]').forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();state.selected={sectionId:s.id,elementKey:b.dataset.key||"link"};renderInspector()}));
 c.appendChild(el)
 });
 }
@@ -79,7 +79,7 @@ const pr=$("#palettes");palettes.forEach(p=>{const b=document.createElement("but
 }else{
 const s=selected();if(!s){body.innerHTML='<div class="property-empty"><strong>Select something</strong>Click a text, button or section on the canvas.</div>';return}
 body.innerHTML=`<div class="inspector-block"><div class="inspector-title"><strong>Position & size</strong><span>Layout</span></div><div class="field-stack"><div><label class="field-label">Width</label><select class="select-control"><option>Auto</option><option>Full width</option><option>Fit content</option></select></div><div><label class="field-label">Alignment</label><div class="segmented"><button class="active">Left</button><button>Center</button><button>Right</button></div></div></div></div><div class="inspector-block"><div class="inspector-title"><strong>Typography</strong><span>Text</span></div><div class="field-stack"><div><label class="field-label">Size</label><input class="number-control" value="18"></div><div><label class="field-label">Weight</label><select class="select-control"><option>400</option><option selected>600</option><option>700</option><option>800</option><option>900</option></select></div><div><label class="field-label">Color</label><input class="color-input" value="#16151b" type="color"></div></div></div><div class="inspector-block"><div class="inspector-title"><strong>Link / action</strong><span>Optional</span></div><div class="link-row"><select class="select-control" id="linkSelect"><option value="">No link</option>${state.pages.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("")}</select><button class="add-square" id="newPageFromLink" type="button">+</button></div><p style="margin:7px 0;color:#9a9aa5;font-size:8px;line-height:1.5">Use any page as a destination for text or buttons.</p></div><div class="inspector-block"><div class="inspector-title"><strong>Arrange</strong><span>Sections</span></div><div class="action-row"><button class="mini-action" id="dupSection">Duplicate</button><button class="mini-action" id="delSection">Delete</button></div></div>`;
-$("#newPageFromLink").onclick=openPageModal;$("#dupSection").onclick=()=>{commit();const a=active().sections,i=a.findIndex(x=>x.id===s.id),copy={...s,id:uid(s.type)};a.splice(i+1,0,copy);state.selected={sectionId:copy.id};dirty();render();toast("Duplicated")};$("#delSection").onclick=()=>{if(["header","footer"].includes(s.type)){toast("Header and footer are always present");return}commit();active().sections=active().sections.filter(x=>x.id!==s.id);state.selected=null;dirty();render();toast("Deleted")};
+const linkSelect=$("#linkSelect");if(linkSelect){const key=state.selected?.elementKey||"";linkSelect.value=active().links?.[key]||"";linkSelect.onchange=()=>{commit();active().links=active().links||{};if(linkSelect.value)active().links[key]=linkSelect.value;else delete active().links[key];dirty();render();toast(linkSelect.value?"Page link added":"Link removed")}}$("#newPageFromLink").onclick=openPageModal;$("#dupSection").onclick=()=>{commit();const a=active().sections,i=a.findIndex(x=>x.id===s.id),copy={...s,id:uid(s.type)};a.splice(i+1,0,copy);state.selected={sectionId:copy.id};dirty();render();toast("Duplicated")};$("#delSection").onclick=()=>{if(["header","footer"].includes(s.type)){toast("Header and footer are always present");return}commit();active().sections=active().sections.filter(x=>x.id!==s.id);state.selected=null;dirty();render();toast("Deleted")};
 }}
 function openPageModal(){const m=$("#pageModal");m.classList.remove("hidden");$("#pageNameInput").value="";setTimeout(()=>$("#pageNameInput").focus(),30)}
 function closeModals(){$$(".modal-backdrop").forEach(m=>m.classList.add("hidden"))}
