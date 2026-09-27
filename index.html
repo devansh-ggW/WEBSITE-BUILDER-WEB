@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="DEWIFY Website Builder">
+  <title>Website Builder — DEWIFY</title>
+  <link rel="icon" href="/favicon.ico?v=20260920" type="image/x-icon" sizes="any">
+  <link rel="stylesheet" href="styles.css?v=20260927-1">
+  <link rel="stylesheet" href="builder.css?v=20260927-1">
+</head>
+<body class="builder-page">
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <header class="builder-header">
+    <div class="container builder-nav">
+      <div class="builder-brand">DEWIFY <span class="builder-title">/ Website Builder</span></div>
+      <div class="builder-actions">
+        <button class="builder-button" type="button">Preview</button>
+        <button class="builder-button primary" type="button">Save</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="builder-workspace">
+    <aside class="builder-panel builder-left">
+      <div class="builder-panel-head">
+        <span class="builder-eyebrow">PAGES & SECTIONS</span>
+        <h2>Design your site.</h2>
+        <p>Choose a section, then customize the canvas.</p>
+      </div>
+      <div class="builder-sections">
+        <button class="builder-section active" type="button"><span>01</span><strong>Header</strong></button>
+        <button class="builder-section" type="button"><span>02</span><strong>Hero</strong></button>
+        <button class="builder-section" type="button"><span>03</span><strong>About</strong></button>
+        <button class="builder-section" type="button"><span>04</span><strong>Products</strong></button>
+        <button class="builder-section" type="button"><span>05</span><strong>Contact</strong></button>
+        <button class="builder-section" type="button"><span>06</span><strong>Footer</strong></button>
+      </div>
+      <button class="builder-button builder-add" type="button">+ Add section</button>
+
+      <div class="builder-inspector-block">
+        <span class="builder-inspector-label">ELEMENTS</span>
+        <div class="builder-tools">
+          <button class="builder-tool" type="button"><strong>Text</strong><span>Add text</span></button>
+          <button class="builder-tool" type="button"><strong>Image</strong><span>Add image</span></button>
+          <button class="builder-tool" type="button"><strong>Button</strong><span>Add button</span></button>
+          <button class="builder-tool" type="button"><strong>Divider</strong><span>Add divider</span></button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="builder-stage">
+      <div class="builder-stage-head">
+        <div><span class="builder-eyebrow">LIVE CANVAS</span><strong>Click and edit your storefront</strong></div>
+        <span>90%</span>
+      </div>
+      <div class="builder-canvas">
+        <header class="builder-site-top">
+          <strong class="builder-site-brand">YOUR STORE</strong>
+          <div class="builder-site-nav"><span>SHOP</span><span>ABOUT</span><span>CONTACT</span></div>
+        </header>
+        <section class="builder-hero">
+          <div>
+            <span class="kicker">DIGITAL PRODUCTS</span>
+            <h2>Your store.</h2>
+            <p>Click text on the canvas to edit it. Your changes will become the finished storefront.</p>
+            <button class="builder-button primary" type="button">Browse products ↗</button>
+          </div>
+          <div class="builder-hero-card">DROP / ADD IMAGE</div>
+        </section>
+        <section class="builder-catalog">
+          <span class="builder-eyebrow">CATALOG</span>
+          <h3>Products.</h3>
+          <div class="builder-cards">
+            <article class="builder-card"><div class="builder-card-art"></div><strong>Product title</strong><span>INR 499</span></article>
+            <article class="builder-card"><div class="builder-card-art"></div><strong>Product title</strong><span>INR 799</span></article>
+            <article class="builder-card"><div class="builder-card-art"></div><strong>Product title</strong><span>INR 999</span></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <aside class="builder-panel builder-right">
+      <div class="builder-panel-head">
+        <span class="builder-eyebrow">DESIGN</span>
+        <h2>Style selected section.</h2>
+        <p>Full controls will be wired after the design system is locked.</p>
+      </div>
+      <div class="builder-inspector-block">
+        <span class="builder-inspector-label">COLOR PALETTE</span>
+        <div class="builder-palette">
+          <span class="builder-swatch" style="background:#070707"></span>
+          <span class="builder-swatch" style="background:#171717"></span>
+          <span class="builder-swatch" style="background:#9a7cff"></span>
+          <span class="builder-swatch" style="background:#6ca7ff"></span>
+          <span class="builder-swatch" style="background:#f4f2ec"></span>
+        </div>
+      </div>
+      <div class="builder-inspector-block">
+        <span class="builder-inspector-label">TYPOGRAPHY</span>
+        <button class="builder-button" type="button">Inter / Default</button>
+      </div>
+      <div class="builder-inspector-block">
+        <span class="builder-inspector-label">PRODUCT LAYOUT</span>
+        <div class="builder-tools">
+          <button class="builder-tool" type="button"><strong>Grid</strong><span>Cards in columns</span></button>
+          <button class="builder-tool" type="button"><strong>List</strong><span>One product per row</span></button>
+          <button class="builder-tool" type="button"><strong>Featured</strong><span>Highlight one item</span></button>
+        </div>
+      </div>
+      <div class="builder-note">This standalone repo is the builder workspace. It is intentionally not connected to the DEWIFY store yet.</div>
+    </aside>
+  </main>
+
+  <script src="stars.js" defer></script>
+</body>
+</html>
