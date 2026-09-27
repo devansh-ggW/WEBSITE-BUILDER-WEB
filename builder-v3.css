@@ -1,0 +1,5 @@
+:root{--wb-heading-font:Inter;--wb-body-font:Inter}
+.site-page{font-family:var(--wb-body-font),Inter,ui-sans-serif,system-ui,sans-serif}
+.site-page h1,.site-page h2,.site-page h3,.site-page h4,.site-brand-edit{font-family:var(--wb-heading-font),Inter,ui-sans-serif,system-ui,sans-serif}
+.template-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.extra-template{animation:wbTemplateIn .15s ease both}@keyframes wbTemplateIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
