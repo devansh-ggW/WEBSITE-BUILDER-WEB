@@ -9,121 +9,40 @@
   <link rel="icon" href="/favicon.ico?v=20260920" type="image/x-icon">
   <link rel="stylesheet" href="styles.css?v=20260927-1">
   <link rel="stylesheet" href="builder.css?v=20260927-2">
+  <link rel="stylesheet" href="builder-v2.css?v=20260927-1">
 </head>
 <body class="builder-page">
 <div class="builder-app">
   <header class="builder-topbar">
-    <div class="topbar-brand">
-      <div class="dewify-mark">D</div><strong>DEWIFY</strong><span class="slash">/</span><span>Website Builder</span>
-    </div>
-    <div class="topbar-project">
-      <button class="project-name" id="projectNameBtn" type="button">My Store <span>⌄</span></button>
-      <span class="save-status" id="saveStatus">Saved just now</span>
-    </div>
+    <div class="topbar-brand"><div class="dewify-mark">D</div><strong>DEWIFY</strong><span class="slash">/</span><span>Website Builder</span></div>
+    <div class="topbar-project"><button class="project-name" id="projectNameBtn" type="button">My Store <span>⌄</span></button><span class="save-status" id="saveStatus">Saved just now</span></div>
     <div class="topbar-actions">
-      <button class="icon-btn" id="undoBtn" type="button" title="Undo">↶</button>
-      <button class="icon-btn" id="redoBtn" type="button" title="Redo">↷</button>
-      <div class="device-switch">
-        <button class="device-btn active" data-device="desktop" type="button" title="Desktop">▣</button>
-        <button class="device-btn" data-device="tablet" type="button" title="Tablet">▯</button>
-        <button class="device-btn" data-device="mobile" type="button" title="Mobile">▥</button>
-      </div>
-      <button class="top-action" id="previewBtn" type="button">Preview</button>
-      <button class="publish-btn" id="publishBtn" type="button">Publish</button>
+      <button class="icon-btn" id="undoBtn" type="button" title="Undo">↶</button><button class="icon-btn" id="redoBtn" type="button" title="Redo">↷</button>
+      <div class="device-switch"><button class="device-btn active" data-device="desktop" type="button">▣</button><button class="device-btn" data-device="tablet" type="button">▯</button><button class="device-btn" data-device="mobile" type="button">▥</button></div>
+      <button class="top-action" id="previewBtn" type="button">Preview</button><button class="publish-btn" id="publishBtn" type="button">Publish</button>
     </div>
   </header>
-
   <div class="builder-main">
     <aside class="side-panel left-panel">
-      <section class="panel-section">
-        <div class="panel-heading">
-          <div><span class="micro-label">PAGES</span><h1>Your site</h1></div>
-          <button class="add-square" id="addPageBtn" type="button" aria-label="Add page">+</button>
-        </div>
-        <div class="pages-list" id="pagesList"></div>
-        <div class="page-tip">Double-click a page name to rename it.</div>
-      </section>
-
-      <section class="panel-section">
-        <div class="panel-title-row"><span class="micro-label">ELEMENTS</span><button class="clear-search" id="clearElementSearch" type="button">Clear</button></div>
-        <label class="search-box"><span>⌕</span><input id="elementSearch" type="search" placeholder="Search elements"></label>
-        <div class="element-grid">
-          <button class="element-tile" data-element="text" type="button"><b>T</b><span>Text</span></button>
-          <button class="element-tile" data-element="button" type="button"><b>▭</b><span>Button</span></button>
-          <button class="element-tile" data-element="image" type="button"><b>▧</b><span>Image</span></button>
-          <button class="element-tile" data-element="video" type="button"><b>▶</b><span>Video</span></button>
-          <button class="element-tile" data-element="divider" type="button"><b>―</b><span>Divider</span></button>
-          <button class="element-tile" data-element="spacer" type="button"><b>↕</b><span>Spacer</span></button>
-          <button class="element-tile" data-element="icon" type="button"><b>✦</b><span>Icon</span></button>
-          <button class="element-tile" data-element="social" type="button"><b>◎</b><span>Social</span></button>
-          <button class="element-tile" data-element="products" type="button"><b>▦</b><span>Products</span></button>
-          <button class="element-tile" data-element="faq" type="button"><b>?</b><span>FAQ</span></button>
-          <button class="element-tile" data-element="contact" type="button"><b>□</b><span>Contact</span></button>
-          <button class="element-tile" data-element="html" type="button"><b>&lt;/&gt;</b><span>HTML</span></button>
-        </div>
-      </section>
-
-      <section class="panel-section">
-        <div class="panel-title-row"><span class="micro-label">SECTION TEMPLATES</span><button class="text-btn" id="viewAllTemplates" type="button">View all</button></div>
-        <div class="template-grid">
-          <button class="template-card" data-template="hero" type="button"><span class="template-preview hero-preview"></span><b>Hero</b></button>
-          <button class="template-card" data-template="features" type="button"><span class="template-preview feature-preview"></span><b>Features</b></button>
-          <button class="template-card" data-template="products" type="button"><span class="template-preview product-preview"></span><b>Products</b></button>
-          <button class="template-card" data-template="cta" type="button"><span class="template-preview cta-preview"></span><b>CTA</b></button>
-        </div>
-      </section>
+      <section class="panel-section"><div class="panel-heading"><div><span class="micro-label">PAGES</span><h1>Your site</h1></div><button class="add-square" id="addPageBtn" type="button">+</button></div><div class="pages-list" id="pagesList"></div><div class="page-tip">Click a page to open it · double-click to rename · ⋯ for page actions.</div></section>
+      <section class="panel-section"><div class="panel-title-row"><span class="micro-label">ELEMENTS</span><button class="clear-search" id="clearElementSearch" type="button">Clear</button></div><label class="search-box"><span>⌕</span><input id="elementSearch" type="search" placeholder="Search elements"></label><div class="element-grid">
+        <button class="element-tile" data-element="text" type="button"><b>T</b><span>Text</span></button><button class="element-tile" data-element="button" type="button"><b>▭</b><span>Button</span></button><button class="element-tile" data-element="image" type="button"><b>▧</b><span>Image</span></button><button class="element-tile" data-element="video" type="button"><b>▶</b><span>Video</span></button><button class="element-tile" data-element="divider" type="button"><b>―</b><span>Divider</span></button><button class="element-tile" data-element="spacer" type="button"><b>↕</b><span>Spacer</span></button><button class="element-tile" data-element="icon" type="button"><b>✦</b><span>Icon</span></button><button class="element-tile" data-element="social" type="button"><b>◎</b><span>Social</span></button><button class="element-tile" data-element="products" type="button"><b>▦</b><span>Products</span></button><button class="element-tile" data-element="faq" type="button"><b>?</b><span>FAQ</span></button><button class="element-tile" data-element="contact" type="button"><b>□</b><span>Contact</span></button><button class="element-tile" data-element="html" type="button"><b>&lt;/&gt;</b><span>HTML</span></button>
+      </div></section>
+      <section class="panel-section"><div class="panel-title-row"><span class="micro-label">SECTION TEMPLATES</span><button class="text-btn" id="viewAllTemplates" type="button">View all</button></div><div class="template-grid"><button class="template-card" data-template="hero" type="button"><span class="template-preview hero-preview"></span><b>Hero</b></button><button class="template-card" data-template="features" type="button"><span class="template-preview feature-preview"></span><b>Features</b></button><button class="template-card" data-template="products" type="button"><span class="template-preview product-preview"></span><b>Products</b></button><button class="template-card" data-template="cta" type="button"><span class="template-preview cta-preview"></span><b>CTA</b></button></div></section>
     </aside>
-
     <main class="canvas-area">
-      <div class="canvas-toolbar">
-        <div class="breadcrumb"><span id="breadcrumbProject">My Store</span><span>/</span><strong id="breadcrumbPage">Home</strong></div>
-        <div class="canvas-tools">
-          <button class="zoom-btn" id="zoomOut" type="button">−</button><span id="zoomLabel">100%</span><button class="zoom-btn" id="zoomIn" type="button">+</button><button class="zoom-btn" id="zoomReset" type="button">□</button>
-        </div>
-      </div>
-      <div class="canvas-scroller">
-        <div class="site-frame desktop" id="siteFrame"><div class="site-page" id="sitePage"></div></div>
-      </div>
-      <div class="canvas-hint">Click an element to edit · Double-click text to type · Add pages from the left</div>
+      <div class="canvas-toolbar"><div class="breadcrumb"><span id="breadcrumbProject">My Store</span><span>/</span><strong id="breadcrumbPage">Home</strong></div><div class="canvas-tools"><button class="zoom-btn" id="zoomOut" type="button">−</button><span id="zoomLabel">100%</span><button class="zoom-btn" id="zoomIn" type="button">+</button><button class="zoom-btn" id="zoomReset" type="button">□</button></div></div>
+      <div class="canvas-scroller"><div class="site-frame desktop" id="siteFrame"><div class="site-page" id="sitePage"></div></div></div>
+      <div class="canvas-hint">Click to select · double-click text to edit · right-click a linked button/text to open its page · Delete removes a selected section</div>
     </main>
-
-    <aside class="side-panel right-panel">
-      <div class="inspector-tabs">
-        <button class="inspector-tab active" data-tab="style" type="button">Style</button>
-        <button class="inspector-tab" data-tab="properties" type="button">Properties</button>
-      </div>
-      <div id="inspectorContent"></div>
-    </aside>
+    <aside class="side-panel right-panel"><div class="inspector-tabs"><button class="inspector-tab active" data-tab="style" type="button">Style</button><button class="inspector-tab" data-tab="properties" type="button">Properties</button></div><div id="inspectorContent"></div></aside>
   </div>
 </div>
-
 <input id="imageUpload" class="sr-only" type="file" accept="image/*">
-
-<div class="modal-backdrop hidden" id="pageModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close-modal type="button">×</button>
-    <span class="micro-label">NEW PAGE</span><h2>Create a new page</h2>
-    <p>Name it anything. Site navigation updates automatically.</p>
-    <label class="modal-field"><span>Page name</span><input id="pageNameInput" maxlength="40" placeholder="About, Pricing, Contact"></label>
-    <div class="modal-actions"><button class="ghost-action" data-close-modal type="button">Cancel</button><button class="primary-action" id="createPageConfirm" type="button">Create page</button></div>
-  </div>
-</div>
-
-<div class="modal-backdrop hidden" id="renameModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close-modal type="button">×</button>
-    <span class="micro-label">RENAME PAGE</span><h2>Name your page</h2>
-    <label class="modal-field"><span>Page name</span><input id="renamePageInput" maxlength="40"></label>
-    <div class="modal-actions"><button class="ghost-action" data-close-modal type="button">Cancel</button><button class="primary-action" id="renamePageConfirm" type="button">Save name</button></div>
-  </div>
-</div>
-
-<div class="preview-overlay hidden" id="previewOverlay">
-  <div class="preview-bar"><strong>Preview</strong><span>Visitor view</span><button class="preview-close" id="closePreviewBtn" type="button">Close preview</button></div>
-  <div class="preview-site" id="previewSite"></div>
-</div>
-
+<div class="modal-backdrop hidden" id="pageModal"><div class="modal-card"><button class="modal-close" data-close-modal type="button">×</button><span class="micro-label">NEW PAGE</span><h2>Create a new page</h2><p>Name it anything. Site navigation updates automatically.</p><label class="modal-field"><span>Page name</span><input id="pageNameInput" maxlength="40" placeholder="About, Pricing, Contact"></label><div class="modal-actions"><button class="ghost-action" data-close-modal type="button">Cancel</button><button class="primary-action" id="createPageConfirm" type="button">Create page</button></div></div></div>
+<div class="modal-backdrop hidden" id="renameModal"><div class="modal-card"><button class="modal-close" data-close-modal type="button">×</button><span class="micro-label">RENAME PAGE</span><h2>Name your page</h2><label class="modal-field"><span>Page name</span><input id="renamePageInput" maxlength="40"></label><div class="modal-actions"><button class="ghost-action" data-close-modal type="button">Cancel</button><button class="primary-action" id="renamePageConfirm" type="button">Save name</button></div></div></div>
+<div class="preview-overlay hidden" id="previewOverlay"><div class="preview-bar"><strong>Preview</strong><span>Visitor view</span><button class="preview-close" id="closePreviewBtn" type="button">Close preview</button></div><div class="preview-site" id="previewSite"></div></div>
 <div class="toast" id="toast"></div>
-<script src="builder.js?v=20260927-2" defer></script>
+<script src="builder.js?v=20260927-3" defer></script>
 </body>
 </html>
