@@ -1,0 +1,59 @@
+/* Builder shell — keeps DEWIFY theme while giving the editor its own workspace. */
+.builder-page{min-height:100vh;background:#070707;color:#f4f2ec}
+.builder-header{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);background:rgba(7,7,7,.94);backdrop-filter:blur(14px)}
+.builder-nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.builder-brand{font-weight:900;letter-spacing:-.06em}
+.builder-title{color:var(--muted);font:9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.11em;text-transform:uppercase}
+.builder-actions{display:flex;gap:8px}
+.builder-button{min-height:36px;padding:0 13px;border:1px solid var(--line-strong);border-radius:7px;background:transparent;color:var(--muted);font-size:10px;cursor:pointer}
+.builder-button:hover{color:var(--text);border-color:var(--text)}
+.builder-button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.builder-workspace{display:grid;grid-template-columns:250px minmax(0,1fr) 290px;min-height:calc(100vh - 64px)}
+.builder-panel{background:#0a0a0a;border-color:var(--line)}
+.builder-left{border-right:1px solid var(--line);padding:18px}
+.builder-right{border-left:1px solid var(--line);padding:18px}
+.builder-panel-head{padding-bottom:16px;border-bottom:1px solid var(--line)}
+.builder-eyebrow{color:var(--dim);font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase}
+.builder-panel-head h1,.builder-panel-head h2{margin:7px 0 0;letter-spacing:-.055em}
+.builder-panel-head h2{font-size:23px}
+.builder-panel-head p{margin:9px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
+.builder-sections{display:flex;flex-direction:column;gap:5px;margin-top:16px}
+.builder-section{display:flex;align-items:center;gap:9px;width:100%;padding:10px;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--muted);text-align:left;cursor:pointer}
+.builder-section:hover{background:#111;color:var(--text)}
+.builder-section.active{background:#151515;border-color:var(--line-strong);color:var(--text)}
+.builder-section span:first-child{width:25px;color:var(--dim);font:8px ui-monospace,SFMono-Regular,Menlo,monospace}
+.builder-section strong{font-size:10px}
+.builder-add{margin-top:14px;width:100%}
+.builder-stage{padding:26px;background:#121212;overflow:auto}
+.builder-stage-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:14px}
+.builder-stage-head strong{font-size:12px}
+.builder-stage-head span{color:var(--dim);font:8px ui-monospace,SFMono-Regular,Menlo,monospace}
+.builder-canvas{width:min(920px,100%);min-height:calc(100vh - 150px);margin:0 auto;border:1px solid var(--line-strong);box-shadow:0 24px 70px rgba(0,0,0,.34);background:#070707;overflow:hidden}
+.builder-site-top{height:70px;padding:0 34px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.builder-site-brand{font-size:16px;font-weight:900;letter-spacing:-.055em}
+.builder-site-nav{display:flex;gap:17px;color:var(--muted);font:8px ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+.builder-hero{min-height:390px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:58px 52px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 78% 25%,rgba(154,124,255,.13),transparent 27%),#070707}
+.builder-hero .kicker{color:var(--muted);font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em}
+.builder-hero h2{margin:10px 0 14px;font-size:clamp(46px,7vw,88px);line-height:.84;letter-spacing:-.09em}
+.builder-hero p{max-width:530px;color:var(--muted);font-size:12px;line-height:1.7}
+.builder-hero-card{min-height:250px;border:1px solid var(--line-strong);border-radius:12px;background:#101010;display:grid;place-items:center;color:var(--dim);font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em}
+.builder-catalog{padding:48px 52px}
+.builder-catalog h3{margin:8px 0;font-size:39px;letter-spacing:-.07em}
+.builder-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:22px}
+.builder-card{min-height:160px;border:1px solid var(--line);border-radius:10px;background:#101010;padding:12px}
+.builder-card-art{height:90px;border-radius:7px;background:#191919;border:1px solid #242424}
+.builder-card strong{display:block;margin-top:11px;font-size:11px}
+.builder-card span{display:block;margin-top:4px;color:var(--muted);font:8px ui-monospace,SFMono-Regular,Menlo,monospace}
+.builder-tools{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}
+.builder-tool{min-height:58px;border:1px solid var(--line);border-radius:8px;background:#0d0d0d;color:var(--muted);cursor:pointer;text-align:left;padding:9px}
+.builder-tool:hover{border-color:var(--line-strong);color:var(--text)}
+.builder-tool strong{display:block;font-size:12px}
+.builder-tool span{display:block;margin-top:5px;font-size:8px}
+.builder-inspector-block{padding:16px 0;border-bottom:1px solid var(--line)}
+.builder-inspector-block:last-child{border-bottom:0}
+.builder-inspector-label{display:block;color:var(--dim);font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.11em;text-transform:uppercase;margin-bottom:9px}
+.builder-palette{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.builder-swatch{height:28px;border:1px solid rgba(244,242,236,.16);border-radius:6px}
+.builder-note{margin-top:15px;padding:12px;border:1px solid var(--line);border-radius:8px;background:#0b0b0b;color:var(--muted);font-size:9px;line-height:1.6}
+@media(max-width:980px){.builder-workspace{grid-template-columns:210px minmax(0,1fr)}.builder-right{display:none}.builder-canvas{width:850px}}
+@media(max-width:680px){.builder-workspace{grid-template-columns:1fr}.builder-left{border-right:0;border-bottom:1px solid var(--line)}.builder-sections{display:grid;grid-template-columns:repeat(3,1fr)}.builder-stage{padding:12px}.builder-canvas{width:760px}.builder-hero{grid-template-columns:1fr}.builder-cards{grid-template-columns:1fr}}
